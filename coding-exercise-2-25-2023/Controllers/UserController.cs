@@ -17,7 +17,8 @@ namespace coding_exercise_2_25_2023.Controllers
             _userService = userServices;
         }
 
-        [HttpGet("Get")]
+        [HttpGet]
+        [Route("{email}")]
         public async Task<IActionResult> Get(string email)
         {
             try
@@ -35,7 +36,8 @@ namespace coding_exercise_2_25_2023.Controllers
             }
         }
 
-        [HttpGet("GetAll")]
+        [HttpGet]
+        [Route("/Users")]
         public async Task<IActionResult> GetAll()
         {
             try
@@ -47,7 +49,8 @@ namespace coding_exercise_2_25_2023.Controllers
                 return Content(HttpStatusCode.InternalServerError.ToString(), "The server encounter an error while processing the request. If this problem persists please contact support.");
             }
         }
-        [HttpPost("Insert")]
+
+        [HttpPost]
         public async Task<IActionResult> Insert(UserModel reg)
         {
             try
@@ -66,7 +69,7 @@ namespace coding_exercise_2_25_2023.Controllers
             }
 
         }
-        [HttpPut("Update")]
+        [HttpPut]
         public async Task<IActionResult> Update(UserModel reg)
         {
             try
@@ -91,7 +94,7 @@ namespace coding_exercise_2_25_2023.Controllers
 
         }
 
-        [HttpDelete("Delete")]
+        [HttpDelete]
         public async Task<IActionResult> Delete(string email)
         {
             try
